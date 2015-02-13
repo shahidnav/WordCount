@@ -10,6 +10,12 @@ Enter the path to your text file in the App.config under the appSettings section
 ## Running the app
 Then simply build and run the console app exe
 
+A dummy file generator batch file is included:
+
+GenerateLargeDummyText.bat
+
+This will generate a 1GB text file for you.
+
 Given an input file containing:
 
     "This is just a sample line appended to create a big file.. "

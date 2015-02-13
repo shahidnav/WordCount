@@ -1,10 +1,12 @@
 # WordCount
-## Setting up the app
-Enter the path to your text file in the App.config under the appSettings section with a key of "completeFilePathToTextFile"
+## Changing the default configuration
+1.Enter the path to your text file in the App.config under the appSettings section with a key of "completeFilePathToTextFile"
+2.Enter the buffer size for the stream reader in the App.config under the appSettings section with a key of "textFileProviderStreamBufferSize", this must be numeric.
 ### Example:
 ```
   <appSettings>
-    <add key="completeFilePathToTextFile" value="R:\\WordCount\\dummy.txt"/>
+    <add key="completeFilePathToTextFile" value="aDirectory\\filename.txt"/>
+    <add key="textFileProviderStreamBufferSize" value="4096"/>
   </appSettings>
 ```
 ## Running the app

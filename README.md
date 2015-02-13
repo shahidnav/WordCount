@@ -31,3 +31,6 @@ CREATE - 2
 BIG - 2
 FILE - 2
 ```
+
+## Dependencies
+*Autofac - for dependency injection

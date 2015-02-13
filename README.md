@@ -33,4 +33,4 @@ FILE - 2
 ```
 
 ## Dependencies
-*Autofac - for dependency injection
+**Autofac** - Dependency injection container

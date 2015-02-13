@@ -7,9 +7,15 @@ namespace WordCount.Main.Services
     public class PlainTextReportBuilder : IReportBuilder
     {
         private const string ReportLineformat = "{0} - {1}";
+        private const string EmptyMapMessage = "Nothing to report as the no words were provided.";
 
         public string Build(IDictionary<string, int> distinctWordtoCountMap)
         {
+            if (distinctWordtoCountMap == null || distinctWordtoCountMap.Count == 0)
+            {
+                return EmptyMapMessage;
+            }
+
             var reportBuilder = new StringBuilder();
             foreach (var wordAndCount in distinctWordtoCountMap)
             {

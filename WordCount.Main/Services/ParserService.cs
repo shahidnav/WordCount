@@ -13,13 +13,17 @@ namespace WordCount.Main.Services
             {
                 if (IsCharacterAWordDelimeter(character))
                 {
+                    // We dont want to return blank words, so lets ignore them
                     if (string.IsNullOrWhiteSpace(word)) continue;
 
                     yield return word.Trim().ToUpperInvariant();
+
+                    // reset for building up the next word
                     word = null;
                 }
                 else
                 {
+                    // word construction in progress
                     word += character;
                 }
             }
@@ -27,6 +31,7 @@ namespace WordCount.Main.Services
 
         private static bool IsCharacterAWordDelimeter(char character)
         {
+            // Assuming words will only contain alphabetic characters.
             return (! char.IsLetter(character));
         }
     }

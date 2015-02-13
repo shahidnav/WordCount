@@ -2,6 +2,7 @@
 ## Changing the default configuration
  - Enter the path to your text file in the App.config under the appSettings section with a key of "completeFilePathToTextFile"
  - Enter the buffer size for the stream reader in the App.config under the appSettings section with a key of "textFileProviderStreamBufferSize", this must be numeric.
+
 ### Example:
 ```
   <appSettings>

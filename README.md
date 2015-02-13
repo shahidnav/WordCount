@@ -9,6 +9,7 @@ Enter the path to your text file in the App.config under the appSettings section
 ```
 ## Running the app
 Then simply build and run the console app exe
+
 Given an input file containing:
 
 "This is just a sample line appended to create a big file.. "

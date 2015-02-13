@@ -1,6 +1,6 @@
 ﻿namespace WordCount.Main.Interfaces
 {
-    public interface IController
+    public interface IDistinctCountController
     {
         void Execute();
         string Report();

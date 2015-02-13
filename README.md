@@ -1,16 +1,17 @@
 # WordCount
-Setting up the app
+## Setting up the app
 Enter the path to your text file in the App.config under the appSettings section with a key of "completeFilePathToTextFile"
-Example:
+### Example:
 ```
   <appSettings>
     <add key="completeFilePathToTextFile" value="R:\\WordCount\\dummy.txt"/>
   </appSettings>
 ```
-
+## Running the app
 Then simply build and run the console app exe
-Given an input file containing "This is just a sample line appended to create a big file.. "
-Sample Output
+Given an input file containing:
+"This is just a sample line appended to create a big file.. "
+#### Sample Output
 ```
 Counting words...
 Input data processed in 0.0020013 secs

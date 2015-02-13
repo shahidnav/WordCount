@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.ComponentModel.Design;
 using Moq;
 using NUnit.Framework;
 using WordCount.Main;
@@ -54,7 +53,7 @@ namespace WordCount.UnitTests
         }
 
         [Test]
-        public void Execute_populates_WordMap_with_distinct_words()
+        public void Execute_populates_WordMap_with_distinct_words_and_correct_count()
         {
             var expectedWordMap = new Dictionary<string, int> {{"RIGHT", 2}, {"SAID", 1}, {"FRED", 1}};
             _mockedParserService.Setup(service => service.ParseWords(It.IsAny<IEnumerable<char>>()))

@@ -12,7 +12,7 @@ Then simply build and run the console app exe
 
 A dummy file generator batch file is included:
 
-GenerateLargeDummyText.bat
+    GenerateLargeDummyText.bat
 
 This will generate a 1GB text file for you.
 

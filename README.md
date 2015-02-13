@@ -13,6 +13,7 @@ Then simply build and run the console app exe
 Given an input file containing:
 
     "This is just a sample line appended to create a big file.. "
+    "This is just a sample line appended to create a big file.. "
 #### Sample Output
 ```
 Counting words...

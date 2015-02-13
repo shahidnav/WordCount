@@ -7,19 +7,21 @@ namespace WordCount.Main.Services
     {
         public IEnumerable<string> ParseWords(IEnumerable<char> inputCharacters)
         {
-            var word = string.Empty;
+            string word = null;
 
             foreach (var character in inputCharacters)
             {
                 if (IsCharacterAWordDelimeter(character))
                 {
-                    if (word.Trim() == string.Empty) continue;
+                    if (string.IsNullOrWhiteSpace(word)) continue;
 
                     yield return word.Trim().ToUpperInvariant();
                     word = string.Empty;
                 }
-
-                word += character;
+                else
+                {
+                    word += character;
+                }
             }
         }
 

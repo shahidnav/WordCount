@@ -41,3 +41,5 @@ FILE - 2
 
 ## Dependencies
 **Autofac** - Dependency injection container
+**NUnit** - Unit test framework
+**Moq** - Mocking frameork

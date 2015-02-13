@@ -16,11 +16,11 @@ A dummy file generator batch file is included:
 
 This will generate a 1GB text file for you.
 
+#### Sample Output
 Given an input file containing:
 
     "This is just a sample line appended to create a big file.. "
     "This is just a sample line appended to create a big file.. "
-#### Sample Output
 ```
 Counting words...
 Input data processed in 0.0020013 secs

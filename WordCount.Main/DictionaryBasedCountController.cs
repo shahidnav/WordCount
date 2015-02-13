@@ -28,7 +28,7 @@ namespace WordCount.Main
             return _reportBuilder.Build(_distinctWordtoCountMap);
         }
 
-        private void PopulateDistinctWordsMap()
+        public void PopulateDistinctWordsMap()
         {
             foreach (var word in _parserService.ParseWords(_textFileProvider.GetCharacters()))
             {

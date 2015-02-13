@@ -4,6 +4,6 @@ namespace WordCount.Main.Interfaces
 {
     public interface IReportBuilder
     {
-        string Build(IDictionary<string, int> distinctWordtoCountMap);
+        string Build(IEnumerable<KeyValuePair<string, int>> distinctWordtoCountMap);
     }
 }

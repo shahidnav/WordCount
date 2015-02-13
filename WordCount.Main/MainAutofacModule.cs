@@ -1,6 +1,5 @@
 ﻿using System.Configuration;
 using System.Reflection;
-using System.Text;
 using Autofac;
 using WordCount.Main.Providers;
 using Module = Autofac.Module;
@@ -9,9 +8,13 @@ namespace WordCount.Main
 {
     public class MainAutofacModule : Module
     {
-        private const string AppSettingForfilePathMissingExceptionMessageFormat = "Please add a value for {0} in the App.config";
+        private const string AppSettingMissingExceptionMessageFormat = "Please add a value for {0} in the App.config.";
+        private const string AppSettingBufferSizeNanMessageFormat = "The value for textFileProviderStreamBufferSize {0} in the App.config is not a valid number.";
         private const string AppSettingKeyForfilePath = "completeFilePathToTextFile";
+        private const string AppSettingKeyForBufferSize = "textFileProviderStreamBufferSize";
+        
         private readonly string _fullPathForTextfile;
+        private readonly int _bufferSize;
 
         public MainAutofacModule()
         {
@@ -19,7 +22,20 @@ namespace WordCount.Main
             if (string.IsNullOrEmpty(_fullPathForTextfile))
             {
                 throw new ConfigurationErrorsException(string.Format(
-                    AppSettingForfilePathMissingExceptionMessageFormat, AppSettingKeyForfilePath));
+                    AppSettingMissingExceptionMessageFormat, AppSettingKeyForfilePath));
+            }
+
+            var bufferSizeAsText = ConfigurationManager.AppSettings.Get(AppSettingKeyForBufferSize);
+            if (string.IsNullOrEmpty(bufferSizeAsText))
+            {
+                throw new ConfigurationErrorsException(string.Format(
+                    AppSettingMissingExceptionMessageFormat, AppSettingKeyForBufferSize));
+            }
+
+            if (!int.TryParse(bufferSizeAsText, out _bufferSize))
+            {
+                throw new ConfigurationErrorsException(string.Format(
+                    AppSettingBufferSizeNanMessageFormat, bufferSizeAsText));
             }
         }
 
@@ -30,7 +46,7 @@ namespace WordCount.Main
 
             builder.RegisterType<TextFileProvider>()
                 .WithParameter(new NamedParameter("fullPathForTextfile", _fullPathForTextfile))
-                .WithParameter(new NamedParameter("encoding", Encoding.UTF8))
+                .WithParameter(new NamedParameter("bufferSize", _bufferSize))
                 .AsImplementedInterfaces();
         }
     }

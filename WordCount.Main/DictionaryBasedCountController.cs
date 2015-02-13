@@ -5,7 +5,7 @@ namespace WordCount.Main
 {
     public class DictionaryBasedCountController : IDistinctCountController
     {
-        private readonly Dictionary<string, int> _distinctWordtoCountMap;
+        private readonly IDictionary<string, int> _distinctWordtoCountMap;
         private readonly IParserService _parserService;
         private readonly IReportBuilder _reportBuilder;
         private readonly ITextFileProvider _textFileProvider;
@@ -18,17 +18,12 @@ namespace WordCount.Main
             _distinctWordtoCountMap = new Dictionary<string, int>();
         }
 
+        public IDictionary<string, int> DistinctWordtoCountMap
+        {
+            get { return _distinctWordtoCountMap; }
+        }
+
         public void Execute()
-        {
-            PopulateDistinctWordsMap();
-        }
-
-        public string Report()
-        {
-            return _reportBuilder.Build(_distinctWordtoCountMap);
-        }
-
-        public void PopulateDistinctWordsMap()
         {
             foreach (var word in _parserService.ParseWords(_textFileProvider.GetCharacters()))
             {
@@ -37,6 +32,11 @@ namespace WordCount.Main
 
                 _distinctWordtoCountMap[word] = ++currentWordcount;
             }
+        }
+
+        public string Report()
+        {
+            return _reportBuilder.Build(_distinctWordtoCountMap);
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Text;
 using WordCount.Main.Interfaces;
 
 namespace WordCount.Main.Services
@@ -7,24 +8,26 @@ namespace WordCount.Main.Services
     {
         public IEnumerable<string> ParseWords(IEnumerable<char> inputCharacters)
         {
-            string word = null;
+            var wordBuilder = new StringBuilder();
 
             foreach (var character in inputCharacters)
             {
                 if (IsCharacterAWordDelimeter(character))
                 {
+                    var word = wordBuilder.ToString();
+
                     // We dont want to return blank words, so lets ignore them
                     if (string.IsNullOrWhiteSpace(word)) continue;
 
-                    yield return word.Trim().ToUpperInvariant();
+                    yield return word.ToUpperInvariant();
 
                     // reset for building up the next word
-                    word = null;
+                    wordBuilder.Clear();
                 }
                 else
                 {
                     // word construction in progress
-                    word += character;
+                    wordBuilder.Append(character);
                 }
             }
         }

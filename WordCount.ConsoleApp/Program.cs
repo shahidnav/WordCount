@@ -14,7 +14,13 @@ namespace WordCount.ConsoleApp
             using (var container = containerBuilder.Build())
             {
                 var controller = container.Resolve<IController>();
+                Console.WriteLine("Counting words...");
+                var startAt = DateTime.Now;
                 controller.Execute();
+                var stopAt = DateTime.Now;
+                Console.WriteLine("Input data processed in {0} secs", new TimeSpan(stopAt.Ticks - startAt.Ticks).TotalSeconds);
+                Console.WriteLine();
+                Console.WriteLine("Distinct words and count:");
                 Console.WriteLine(controller.Report());
                 Console.ReadLine();
             }

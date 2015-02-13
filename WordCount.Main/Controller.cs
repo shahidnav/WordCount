@@ -1,48 +1,44 @@
 ﻿using System.Collections.Generic;
-using System.IO;
-using System.Linq;
+using System.Text;
 using WordCount.Main.Interfaces;
 
 namespace WordCount.Main
 {
     public class Controller : IController
     {
-        private readonly string _fullPathToTextFile;
-        private Dictionary<string, long> _distinctWordsToCountMap;
+        private readonly ITextFileProvider _textFileProvider;
+        private readonly IParserService _parserService;
+        private readonly Dictionary<string, int> _dictinctWordtoCountMap;
 
-        public Controller(string fullPathToTextFile)
+        public Controller(ITextFileProvider textFileProvider, IParserService parserService)
         {
-            _fullPathToTextFile = fullPathToTextFile;
-            _distinctWordsToCountMap = new Dictionary<string, long>();
+            _textFileProvider = textFileProvider;
+            _parserService = parserService;
+            _dictinctWordtoCountMap = new Dictionary<string, int>();
         }
 
         public void Execute()
         {
-            
+            foreach (var word in _parserService.ParseWords(_textFileProvider.GetCharacters()))
+            {
+                int currentWordcount;
+                _dictinctWordtoCountMap.TryGetValue(word, out currentWordcount);
+
+                _dictinctWordtoCountMap[word] = ++currentWordcount;
+            }
         }
         
         public string Report()
         {
-            throw new System.NotImplementedException();
-        }
-
-        public static IEnumerable<string> ParseWords(string fullPathToTextFile)
-        {
-            using (var fileReader = new StreamReader(File.OpenRead(fullPathToTextFile)))
+            var reportBuilder = new StringBuilder();
+            const string reportLineformat = "{0} - {1}";
+            foreach (var wordAndCount in _dictinctWordtoCountMap)
             {
-                var buffer = new char[500];
-                while (! fileReader.EndOfStream)
-                {
-                    
-                    fileReader.ReadBlock(buffer, buffer.Count(), 500 - buffer.Length);
-                    var words = buffer.ToString();
-                    
-                    foreach (var word in words.Split(' '))
-                    {
-                        yield return word;
-                    }
-                }
+                reportBuilder.AppendFormat(reportLineformat, wordAndCount.Key, wordAndCount.Value);
+                reportBuilder.AppendLine();
             }
+
+            return reportBuilder.ToString();
         }
     }
 }

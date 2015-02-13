@@ -26,7 +26,7 @@ Given an input file containing:
     "This is just a sample line appended to create a big file.. "
 ```
 Counting words...
-Input data processed in 0.0020013 secs
+Input data processed in 0.0020001 secs
 
 Distinct words and count:
 THIS - 2

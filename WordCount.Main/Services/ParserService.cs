@@ -16,7 +16,7 @@ namespace WordCount.Main.Services
                     if (string.IsNullOrWhiteSpace(word)) continue;
 
                     yield return word.Trim().ToUpperInvariant();
-                    word = string.Empty;
+                    word = null;
                 }
                 else
                 {

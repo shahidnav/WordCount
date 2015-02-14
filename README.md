@@ -5,6 +5,7 @@ Simply build and run the console app exe,
 a sample text file will be copied to the build output folder ready for processing, as part of the build process.
 #### Sample Output:
 Given an input file containing:
+
     "This is just a sample line appended to create a big file.. "
     "This is just a sample line appended to create a big file.. "
 ```
@@ -24,7 +25,6 @@ CREATE - 2
 BIG - 2
 FILE - 2
 ```
-
 ## Changing the default configuration
  - Enter the path to your text file in the App.config under the appSettings section with a key of "completeFilePathToTextFile"
  - Enter the buffer size for the stream reader in the App.config under the appSettings section with a key of "textFileProviderStreamBufferSize", this must be numeric.
@@ -36,11 +36,9 @@ FILE - 2
     <add key="textFileProviderStreamBufferSize" value="4096"/>
   </appSettings>
 ```
-
 A dummy file generator batch file is included if you need it:
 
     GenerateLargeDummyText.bat
-
 This will generate a 1GB text file for you.
 
 ## Dependencies

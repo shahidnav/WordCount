@@ -30,6 +30,9 @@ namespace WordCount.Main.Providers
                 var buffer = new char[_bufferSize];
                 while (! streamreader.EndOfStream)
                 {
+                    // As the file could be gigantic single line
+                    // we will process a single character at a time
+                    // as opposed to by reading in whole line at a time.
                     streamreader.ReadBlock(buffer, 0, _bufferSize);
                     foreach (var character in buffer)
                     {

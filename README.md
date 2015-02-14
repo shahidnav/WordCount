@@ -46,6 +46,6 @@ A dummy file generator batch file is included if you need it:
 This will generate a 1GB text file for you.
 
 ## Dependencies
-**Autofac** - Dependency injection container
-**NUnit** - Unit test framework
-**Moq** - Mocking frameork
+ - **Autofac** - Dependency injection container
+ - **NUnit** - Unit test framework
+ - **Moq** - Mocking frameork

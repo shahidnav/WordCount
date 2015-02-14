@@ -12,7 +12,7 @@ namespace WordCount.Main.Services
 
             foreach (var character in inputCharacters)
             {
-                if (IsCharacterAWordDelimeter(character))
+                if (IsCharacterAWordDelimeter(character) )
                 {
                     var word = wordBuilder.ToString();
 
@@ -30,9 +30,15 @@ namespace WordCount.Main.Services
                     wordBuilder.Append(character);
                 }
             }
+
+            // the last character may not have been a delimeter, this can cause the last word to be missed
+            if (wordBuilder.Length > 0)
+            {
+                yield return wordBuilder.ToString().ToUpperInvariant(); 
+            }
         }
 
-        private static bool IsCharacterAWordDelimeter(char character)
+        public bool IsCharacterAWordDelimeter(char character)
         {
             // Assuming words will only contain alphabetic characters.
             return (! char.IsLetter(character));

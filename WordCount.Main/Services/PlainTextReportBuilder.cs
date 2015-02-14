@@ -12,8 +12,13 @@ namespace WordCount.Main.Services
 
         public string Build(IEnumerable<KeyValuePair<string, int>> distinctWordtoCountMap)
         {
+            if (distinctWordtoCountMap == null)
+            {
+                return EmptyMapMessage;
+            }
+
             var wordtoCountMap = distinctWordtoCountMap as IList<KeyValuePair<string, int>> ?? distinctWordtoCountMap.ToList();
-            if (distinctWordtoCountMap == null || !wordtoCountMap.Any())
+            if (!wordtoCountMap.Any())
             {
                 return EmptyMapMessage;
             }

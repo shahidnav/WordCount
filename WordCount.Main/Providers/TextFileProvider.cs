@@ -33,6 +33,11 @@ namespace WordCount.Main.Providers
                     streamreader.ReadBlock(buffer, 0, _bufferSize);
                     foreach (var character in buffer)
                     {
+                        if (character.Equals('\0'))
+                        {
+                            break;
+                        }
+
                         yield return character;
                     }
                 }

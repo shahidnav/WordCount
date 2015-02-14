@@ -52,8 +52,11 @@
     <Otherwise />
   </Choose>
   <ItemGroup>
+    <Compile Include="ParserServiceTests.cs" />
+    <Compile Include="PlainTextReportBuilderTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="DictionaryBasedCountControllerTests.cs" />
+    <Compile Include="TextFileProviderTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

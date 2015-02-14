@@ -1,24 +1,7 @@
 # WordCount
-## Changing the default configuration
- - Enter the path to your text file in the App.config under the appSettings section with a key of "completeFilePathToTextFile"
- - Enter the buffer size for the stream reader in the App.config under the appSettings section with a key of "textFileProviderStreamBufferSize", this must be numeric.
-
-### Example:
-```
-  <appSettings>
-    <add key="completeFilePathToTextFile" value="aDirectory\\filename.txt"/>
-    <add key="textFileProviderStreamBufferSize" value="4096"/>
-  </appSettings>
-```
 ## Running the app
-Then simply build and run the console app exe
-
-A dummy file generator batch file is included:
-
-    GenerateLargeDummyText.bat
-
-This will generate a 1GB text file for you.
-
+Simply build and run the console app exe, 
+a sample text file is included in the build output folder ready for processing.
 #### Sample Output
 Given an input file containing:
 
@@ -41,6 +24,24 @@ CREATE - 2
 BIG - 2
 FILE - 2
 ```
+
+## Changing the default configuration
+ - Enter the path to your text file in the App.config under the appSettings section with a key of "completeFilePathToTextFile"
+ - Enter the buffer size for the stream reader in the App.config under the appSettings section with a key of "textFileProviderStreamBufferSize", this must be numeric.
+
+### Example:
+```
+  <appSettings>
+    <add key="completeFilePathToTextFile" value="aDirectory\\filename.txt"/>
+    <add key="textFileProviderStreamBufferSize" value="4096"/>
+  </appSettings>
+```
+
+A dummy file generator batch file is included if you need it:
+
+    GenerateLargeDummyText.bat
+
+This will generate a 1GB text file for you.
 
 ## Dependencies
 **Autofac** - Dependency injection container

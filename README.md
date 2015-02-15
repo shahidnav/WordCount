@@ -1,5 +1,5 @@
 # WordCount
-Processes large text files and reports on the distinct words and the number of times they occurred in the given text file.
+Given a large text file reports on the distinct words and the number of times they occurred in the given text file.
 ## Running the app
 Simply build and run the console app exe, 
 a sample text file will be copied to the build output folder ready for processing, as part of the build process.
